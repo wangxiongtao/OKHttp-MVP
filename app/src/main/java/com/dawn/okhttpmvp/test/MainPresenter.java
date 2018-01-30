@@ -1,7 +1,7 @@
 package com.dawn.okhttpmvp.test;
 
+import com.dawn.httplib.http.request.OkRequest;
 import com.dawn.okhttpmvp.base.BasePresenter;
-import com.dawn.okhttpmvp.http.request.HttpRequest;
 import com.dawn.okhttpmvp.mvp.IModel;
 import com.dawn.okhttpmvp.mvp.IView;
 
@@ -14,9 +14,17 @@ public class MainPresenter extends BasePresenter {
         super(view);
     }
 
-    public void getData(HttpRequest request){
+    public void getData(OkRequest request){
         IModel.getInstance().post(request,this);
 
     }
+//    public void getData2(OkRequest request){
+//        IModel.getInstance().post(request,this);
+//
+//    }
+//    public void getData3(OkRequest request){
+//        IModel.getInstance().post(request,this);
+//
+//    }。。。等等等一系列的网络请求或者其他的逻辑
 
 }

@@ -1,7 +1,7 @@
 package com.dawn.okhttpmvp.base;
 
 
-import com.dawn.okhttpmvp.http.HttpCallBack;
+import com.dawn.httplib.http.HttpCallBack;
 import com.dawn.okhttpmvp.mvp.IPresenter;
 import com.dawn.okhttpmvp.mvp.IView;
 
@@ -42,10 +42,11 @@ public abstract class BasePresenter implements IPresenter,HttpCallBack {
     }
 
     @Override
-    public void onHttpFail(int tag) {
+    public void onHttpFail(int tag,String errorMsg) {
         if(getView()!=null){
+
             getView().closeLoading();
-            getView().handlerErrorView(tag,"");
+            getView().handlerErrorView(tag,errorMsg);
         }
 
     }
@@ -56,7 +57,7 @@ public abstract class BasePresenter implements IPresenter,HttpCallBack {
     }
 
     @Override
-    public void onDestory() {
+    public void onDestroy() {
        if(viewRef!=null){
            viewRef.clear();
            viewRef=null;

@@ -3,6 +3,7 @@ package com.dawn.okhttpmvp.test;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dawn.okhttpmvp.R;
 import com.dawn.okhttpmvp.base.BaseActivity;
@@ -63,6 +64,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void handlerErrorView(int tag, Object data) {
+        Toast.makeText(this,data.toString(),0).show();
 
     }
 

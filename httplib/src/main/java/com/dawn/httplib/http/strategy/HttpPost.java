@@ -1,12 +1,12 @@
-package com.dawn.okhttpmvp.http.strategy;
+package com.dawn.httplib.http.strategy;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.dawn.okhttpmvp.http.HttpCallBack;
-import com.dawn.okhttpmvp.http.request.HttpRequest;
+import com.dawn.httplib.http.HttpCallBack;
+import com.dawn.httplib.http.request.OkRequest;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,9 +27,9 @@ import okhttp3.Response;
 public class HttpPost implements IHttpStrategy {
 
     @Override
-    public void doRequest(OkHttpClient okHttpClient, HttpRequest request, final HttpCallBack callBack) {
+    public void doRequest(OkHttpClient okHttpClient, OkRequest request, final HttpCallBack callBack) {
         Log.e("aaa", "===执行开始======>" + request + "TAG==" + request.getTag() + "----------" + request.getParamMap());
-        callBack.onHttpStart(10);
+        callBack.onHttpStart(request.getTag());
         try {
             FormBody.Builder builder = new FormBody.Builder();
             HashMap<String, String> map = request.getParamMap();

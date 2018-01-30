@@ -1,7 +1,8 @@
-package com.dawn.okhttpmvp.http;
+package com.dawn.httplib.http;
 
-import com.dawn.okhttpmvp.http.request.HttpRequest;
-import com.dawn.okhttpmvp.http.strategy.IHttpStrategy;
+
+import com.dawn.httplib.http.request.OkRequest;
+import com.dawn.httplib.http.strategy.IHttpStrategy;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -60,7 +61,7 @@ public class HttpMananger {
 
 
 
-    public void doRequest(IHttpStrategy http, HttpRequest request, HttpCallBack callBack){
+    public void doRequest(IHttpStrategy http, OkRequest request, HttpCallBack callBack){
         http.doRequest(okHttpClient,request,callBack);
     }
 

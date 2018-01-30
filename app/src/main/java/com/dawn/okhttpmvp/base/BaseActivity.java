@@ -14,7 +14,6 @@ import com.dawn.okhttpmvp.mvp.IView;
  * 基类Activity 定义了Activity中的常用方法
  * 封装了公共的Toolbar 的初始化，
  * 布局文件初始化
- * 状态栏沉浸颜色的初始化
  */
 
 public abstract class BaseActivity extends AppCompatActivity implements IView {
@@ -75,7 +74,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IView {
     protected void onDestroy() {
         super.onDestroy();
         if (presenter != null) {
-            presenter.onDestory();
+            presenter.onDestroy();
             presenter = null;
         }
     }

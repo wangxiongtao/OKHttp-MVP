@@ -7,6 +7,6 @@ package com.dawn.okhttpmvp.mvp;
 public interface IPresenter {
     IView getView();
 
-    void onDestory();
+    void onDestroy();
 
 }

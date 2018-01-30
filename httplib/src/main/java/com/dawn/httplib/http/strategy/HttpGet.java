@@ -1,7 +1,8 @@
-package com.dawn.okhttpmvp.http.strategy;
+package com.dawn.httplib.http.strategy;
 
-import com.dawn.okhttpmvp.http.HttpCallBack;
-import com.dawn.okhttpmvp.http.request.HttpRequest;
+
+import com.dawn.httplib.http.HttpCallBack;
+import com.dawn.httplib.http.request.OkRequest;
 
 import okhttp3.OkHttpClient;
 
@@ -14,7 +15,7 @@ public class HttpGet implements IHttpStrategy {
 
 
     @Override
-    public void doRequest(OkHttpClient client, HttpRequest httpRequest, HttpCallBack callBack) {
+    public void doRequest(OkHttpClient client, OkRequest okRequest, HttpCallBack callBack) {
         // TODO: 待实现
 
     }
