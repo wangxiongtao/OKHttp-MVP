@@ -34,7 +34,7 @@ public abstract class BasePresenter implements IPresenter,HttpCallBack {
     }
 
     @Override
-    public void onHttpSuccess( int tag,String response) {
+    public void onHttpSuccess( int tag,Object response) {
         if(getView()!=null){
             getView().closeLoading();
             getView().handlerView(tag,response);
@@ -44,7 +44,6 @@ public abstract class BasePresenter implements IPresenter,HttpCallBack {
     @Override
     public void onHttpFail(int tag,String errorMsg) {
         if(getView()!=null){
-
             getView().closeLoading();
             getView().handlerErrorView(tag,errorMsg);
         }
@@ -52,7 +51,11 @@ public abstract class BasePresenter implements IPresenter,HttpCallBack {
     }
 
     @Override
-    public void onProgress(long total, long current) {
+    public void onProgress(int tag,long total, long current,int percent) {
+        if(getView()!=null){
+            getView().closeLoading();
+            getView().handlerdownload(tag,total,current,percent);
+        }
 
     }
 

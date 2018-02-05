@@ -4,6 +4,7 @@ package com.dawn.httplib.http.response;
  * Created by wind on 16/8/31 13:07
  */
 public class BaseResult<T> {
+	public static String OKCODE="0000";
 
 	public T data;
 
@@ -13,10 +14,11 @@ public class BaseResult<T> {
 
 	public String action;
 
+
 	@Override
 	public String toString() {
 		return "HttpResult{" +
-				" data=" + data +
+				" data=" + data.getClass() +
 				", code='" + code + '\'' +
 				", msg='" + msg + '\'' +
 				", action='" + action + '\'' +

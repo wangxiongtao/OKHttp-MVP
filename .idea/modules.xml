@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/OKHttpMvp.iml" filepath="$PROJECT_DIR$/OKHttpMvp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/httplib/httplib.iml" filepath="$PROJECT_DIR$/httplib/httplib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/retrofitlibrary/retrofitlibrary.iml" filepath="$PROJECT_DIR$/retrofitlibrary/retrofitlibrary.iml" />
     </modules>
   </component>
 </project>

@@ -1,11 +1,13 @@
 package com.dawn.okhttpmvp.base;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.dawn.okhttpmvp.mvp.IView;
 
@@ -51,8 +53,10 @@ public abstract class BaseActivity extends AppCompatActivity implements IView {
     protected abstract void initData();//获取数据等逻辑操作
 
 
-
-
+    @Override
+    public Context getContext() {
+        return this;
+    }
 
     @Override
     public void showLoading() {
@@ -68,6 +72,21 @@ public abstract class BaseActivity extends AppCompatActivity implements IView {
         if(dialog!=null){
             dialog.dismiss();
         }
+    }
+
+    @Override
+    public void handlerView(int tag, Object data) {
+
+    }
+
+    @Override
+    public void handlerdownload(int tag, long total, long current,int percent) {
+
+    }
+
+    @Override
+    public void handlerErrorView(int tag, String errorMsg) {
+        Toast.makeText(this,errorMsg,0).show();
     }
 
     @Override

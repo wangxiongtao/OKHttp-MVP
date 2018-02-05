@@ -21,6 +21,9 @@ public class IModel {
     public void post(IRequest request, HttpCallBack callBack){
         request.doPostRequest(callBack);
     }
+    public void downLoad(IRequest request, HttpCallBack callBack){
+        request.doDownloadRequest(callBack);
+    }
 
 
 

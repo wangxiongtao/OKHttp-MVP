@@ -7,9 +7,9 @@ package com.dawn.httplib.http;
 public interface HttpCallBack {
     void onHttpStart(int tag);
 
-    void onHttpSuccess(int tag, String response);
+    void onHttpSuccess(int tag, Object response);
 
     void onHttpFail(int tag,String errorMsg);
 
-    void onProgress(long total, long current);
+    void onProgress(int tag,long total, long current,int percent);
 }

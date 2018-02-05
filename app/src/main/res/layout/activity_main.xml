@@ -11,6 +11,17 @@
         android:layout_width="match_parent"
         android:onClick="onClick"
         android:layout_height="50dp"/>
+    <ProgressBar
+        android:id="@+id/pbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="2dp"
+        android:minHeight="2dp"
+        android:progress="20"
+        android:max="100"
+        android:secondaryProgress="40"
+        android:progressDrawable="@drawable/progress"
+        style="?android:attr/progressBarStyleHorizontal"  />
 
         <TextView
             android:id="@+id/t1"

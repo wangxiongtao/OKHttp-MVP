@@ -18,6 +18,10 @@ public class MainPresenter extends BasePresenter {
         IModel.getInstance().post(request,this);
 
     }
+    public void downLoadData(OkRequest request){
+        IModel.getInstance().downLoad(request,this);
+
+    }
 //    public void getData2(OkRequest request){
 //        IModel.getInstance().post(request,this);
 //

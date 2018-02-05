@@ -5,12 +5,20 @@ import com.dawn.httplib.http.request.OkRequest;
 import com.dawn.httplib.http.strategy.IHttpStrategy;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.annotations.Nullable;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
+import retrofit2.Converter;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 /**
  * Created by Administrator on 2017/11/23.
@@ -42,6 +50,40 @@ public class HttpMananger {
                 })
                 .build();
     }
+
+    public Retrofit getRetrofit(String baseUrl,OkHttpClient client){
+        return new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(new Converter.Factory() {
+                    @Nullable
+                    @Override
+                    public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
+                        return super.responseBodyConverter(type, annotations, retrofit);
+                    }
+
+                    @Nullable
+                    @Override
+                    public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
+                        return super.requestBodyConverter(type, parameterAnnotations, methodAnnotations, retrofit);
+                    }
+
+                    @Nullable
+                    @Override
+                    public Converter<?, String> stringConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
+                        return super.stringConverter(type, annotations, retrofit);
+                    }
+                })
+                .client(client)
+                .build();
+
+    }
+
+
+
+
+
+
 
 
     private Response addHeader(Interceptor.Chain chain) throws IOException {
