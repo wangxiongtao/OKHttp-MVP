@@ -1,7 +1,6 @@
 package com.dawn.okhttpmvp.test;
 
 
-import com.dawn.httplib.http.API;
 import com.dawn.httplib.http.request.OkRequest;
 import com.dawn.httplib.http.response.BaseResult;
 import com.dawn.okhttpmvp.test.response.GoodsListBean;
@@ -21,7 +20,7 @@ public class MainRequest2 extends OkRequest<BaseResult<GoodsListBean>> {
 
     @Override
     public String getUrl() {
-        return API.BASE_URL+"getProductDetail";
+        return "getProductDetail";
     }
 
     @Override

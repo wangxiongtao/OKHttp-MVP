@@ -1,11 +1,11 @@
 package com.example.retrofitlibrary;
 
+import java.util.HashMap;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 
 /**
@@ -13,30 +13,38 @@ import retrofit2.Retrofit;
  */
 
 public class HttpManager {
+    static class Request{
+
+    }
 
 
-    public Retrofit getRetrofit(){
+    public static Retrofit getRetrofit(){
         return new Retrofit.Builder()
                 .baseUrl("https://api.github.com")
                 .build();
 
     }
 
-    public void init()  {
-        Retrofit retrofit= new Retrofit.Builder()
-                .baseUrl("https://api.github.com")
-                .build();
-        APIInterface service = retrofit.create(APIInterface.class);
-        Call<MyClass> model = service.repo("Guolei1130");
-        Observable<MyClass> model2 = service.repo2("Guolei1130");
-        model2.subscribe(new Observer<MyClass>() {
+    public static Observable<ResponseBody> init(Request request)  {
+        APIInterface service = getRetrofit().create(APIInterface.class);
+        Observable<ResponseBody> model2 = service.doPost("",new HashMap<String, String>());
+
+        return  Observable.merge(model2,model2);
+
+
+    }
+
+    public static void main(String[] args) {
+        init(new Request())
+                .mergeWith( init(new Request()))
+                .subscribe(new Observer<ResponseBody>() {
             @Override
             public void onSubscribe(Disposable d) {
 
             }
 
             @Override
-            public void onNext(MyClass myClass) {
+            public void onNext(ResponseBody myClass) {
 
             }
 
@@ -50,22 +58,5 @@ public class HttpManager {
 
             }
         });
-
-
-
-
-        model.enqueue(new Callback<MyClass>() {
-            @Override
-            public void onResponse(Call<MyClass> call, Response<MyClass> response) {
-
-
-            }
-
-            @Override
-            public void onFailure(Call<MyClass> call, Throwable t) {
-
-            }
-        });
-
     }
 }

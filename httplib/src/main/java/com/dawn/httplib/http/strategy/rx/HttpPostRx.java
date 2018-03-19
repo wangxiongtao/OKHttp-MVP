@@ -62,7 +62,7 @@ public class HttpPostRx implements IRxStrategy, IHttpStrategy {
                     @Override
                     public void onNext(OkResponse o) {
                         super.onNext(o);
-                        HttpException exception = ResponseHandler.checkResult(o, request.getmGenericSuperclass());
+                        HttpException exception = ResponseHandler.checkResult(o, request.getGenericSuperclass());
                         if (exception.getCode() == RESULT_NO_ERROR_CODE) {
                             callBack.onHttpSuccess((Integer) o.getResponse().request().tag(), exception.getResult().data);
                         } else {

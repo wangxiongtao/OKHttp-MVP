@@ -11,21 +11,21 @@ import com.dawn.httplib.http.request.IRequest;
 public class IModel {
 
     private static IModel iModel;
-    public static IModel getInstance(){
-        if(iModel==null){
-            iModel=new IModel();
+
+    public static IModel getInstance() {
+        if (iModel == null) {
+            iModel = new IModel();
         }
         return iModel;
     }
 
-    public void post(IRequest request, HttpCallBack callBack){
+    public void post(IRequest request, HttpCallBack callBack) {
         request.doPostRequest(callBack);
     }
-    public void downLoad(IRequest request, HttpCallBack callBack){
+
+    public void downLoad(IRequest request, HttpCallBack callBack) {
         request.doDownloadRequest(callBack);
     }
-
-
 
 
 }

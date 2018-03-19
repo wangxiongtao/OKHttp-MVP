@@ -1,8 +1,6 @@
 package com.example.lib;
 
 
-import com.alibaba.fastjson.JSON;
-
 class MyData{
     @Override
     public String toString() {
@@ -14,9 +12,7 @@ class P<T>{
 
 
     public void setData() {
-        String str="{\"code\":\"0000\",\"msg\":\"获取门店分类商品成功\",\"data\":[],\"action\":null}";
-        BaseResult<T> result= JSON.parseObject(str,BaseResult.class);
-        System.out.print(result.data);
+
     }
 
 
@@ -47,7 +43,16 @@ public class myClass {
     public static void main(String[] args) {
         S s=new S();
         s.setData();
+//        fun(0);
+        fun(1);
 
+    }
+
+    public static void fun(int i){
+        if(i==0){
+            throw  new NullPointerException();
+        }
+        System.out.print("=====hahahhahaa====");
     }
 
 

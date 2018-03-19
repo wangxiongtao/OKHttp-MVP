@@ -19,11 +19,6 @@ import java.util.HashMap;
 
 public abstract class OkRequest<T> implements IRequest {
     private final Type mGenericSuperclass;
-    T t;
-    public static final int GET = 1;//GET POST DOWNLOAD UPLOAD
-    public static final int POST = 2;//GET POST DOWNLOAD UPLOAD
-    public static final int DOWNLOAD = 3;//GET POST DOWNLOAD UPLOAD
-    public static final int UPLOAD = 4;//GET POST DOWNLOAD UPLOAD
     private int tag=-1;
     private String downLoadDir;//下载目录
     private String fileName;//下载的文件名
@@ -34,6 +29,14 @@ public abstract class OkRequest<T> implements IRequest {
         this();
         this.tag = tag;
 
+    }
+    public OkRequest() {
+        Type genericSuperclass = getClass().getGenericSuperclass();
+        if (genericSuperclass instanceof ParameterizedType) {
+            mGenericSuperclass = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
+        } else {
+            mGenericSuperclass = Object.class;
+        }
     }
 
     public void setDownLoadDir(String downLoadDir) {
@@ -52,16 +55,9 @@ public abstract class OkRequest<T> implements IRequest {
         return fileName;
     }
 
-    public OkRequest() {
-        Type genericSuperclass = getClass().getGenericSuperclass();
-        if (genericSuperclass instanceof ParameterizedType) {
-            mGenericSuperclass = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
-        } else {
-            mGenericSuperclass = Object.class;
-        }
-    }
 
-    public Type getmGenericSuperclass() {
+
+    public Type getGenericSuperclass() {
         return mGenericSuperclass;
     }
 
@@ -70,9 +66,6 @@ public abstract class OkRequest<T> implements IRequest {
         return tag;
     }
 
-    public void setT(T t) {
-        this.t = t;
-    }
 
     @Override
     public void doPostRequest(HttpCallBack callBack) {
@@ -124,6 +117,8 @@ public abstract class OkRequest<T> implements IRequest {
         hashMap.put("token", "");
         return hashMap;
     }
+
+
 
 
 }

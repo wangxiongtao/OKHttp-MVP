@@ -96,11 +96,11 @@ public class MainActivity extends BaseActivity {
     }
 
     public void onClick(View v){
-        MainRequest request=new MainRequest(REQUEST_TAG1);
-        request.proTypeCode="101";
-        request.currentPageNum="1";
-        request.pageCount="10";
-
+//        final MainRequest request=new MainRequest(REQUEST_TAG1);
+//        request.proTypeCode="101";
+//        request.currentPageNum="1";
+//        request.pageCount="10";
+//
         DownLoadRequest request1=new DownLoadRequest();
         request1.setDownLoadDir(Environment.getExternalStorageDirectory()+ File.separator+"test");
         request1.setFileName("kaochao.apk");
@@ -110,7 +110,61 @@ public class MainActivity extends BaseActivity {
 
         MainRequest2 request2=new MainRequest2(REQUEST_TAG2);
         request2.productId="15010021771";
-        presenter.getData(request2);
+//        presenter.getData(request2);
+//        RetrofitManager.getInstance().setRequest(request2,request).subscribe(new Observer<Object>() {
+//            @Override
+//            public void onSubscribe(Disposable d) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(Object o) {
+//                Log.e("aaa","==onNext=====>"+o);
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                Log.e("aaa","==Throwable=====>"+e.getMessage());
+//
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//
+//            }
+//        });
+//        RetrofitManager.getInstance().setRequest(request)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<ResponseBody>() {
+//            @Override
+//            public void onSubscribe(Disposable d) {
+//                Log.e("aaa","====onSubscribe=========>");
+//            }
+//
+//            @Override
+//            public void onNext(ResponseBody responseBody) {
+//                try {
+//                    Log.e("aaa","====RetrofitManager=========>"+responseBody.string());
+//                    Log.e("aaa","====end=========>");
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                e.printStackTrace();
+//                Log.e("aaa","====Throwable=========>"+e.getMessage());
+//
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//                Log.e("aaa","====onComplete=========>");
+//            }
+//        });
     }
 
 

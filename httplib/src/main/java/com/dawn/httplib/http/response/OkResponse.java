@@ -68,6 +68,7 @@ public class OkResponse {
 
     }
 
+
     private String getHeadString() {
         Headers headers = this.response.request().headers();
         StringBuilder builder = new StringBuilder();

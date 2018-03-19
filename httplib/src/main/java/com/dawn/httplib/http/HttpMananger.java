@@ -5,18 +5,19 @@ import com.dawn.httplib.http.request.OkRequest;
 import com.dawn.httplib.http.strategy.IHttpStrategy;
 
 import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Type;
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.annotations.Nullable;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
-import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -37,7 +38,7 @@ public class HttpMananger {
         okHttpClient=getOkHttpClient();
 
     }
-    OkHttpClient getOkHttpClient() {
+    public OkHttpClient getOkHttpClient() {
         return new OkHttpClient.Builder()
                 .readTimeout(30, TimeUnit.SECONDS)//设置读取超时时间
                 .writeTimeout(30, TimeUnit.SECONDS)//设置写的超时时间
@@ -55,25 +56,6 @@ public class HttpMananger {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(new Converter.Factory() {
-                    @Nullable
-                    @Override
-                    public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
-                        return super.responseBodyConverter(type, annotations, retrofit);
-                    }
-
-                    @Nullable
-                    @Override
-                    public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
-                        return super.requestBodyConverter(type, parameterAnnotations, methodAnnotations, retrofit);
-                    }
-
-                    @Nullable
-                    @Override
-                    public Converter<?, String> stringConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
-                        return super.stringConverter(type, annotations, retrofit);
-                    }
-                })
                 .client(client)
                 .build();
 
@@ -105,6 +87,40 @@ public class HttpMananger {
 
     public void doRequest(IHttpStrategy http, OkRequest request, HttpCallBack callBack){
         http.doRequest(okHttpClient,request,callBack);
+    }
+
+    public void fun(){
+        Observable observable=Observable.create(new ObservableOnSubscribe<Object>() {
+            @Override
+            public void subscribe(ObservableEmitter<Object> emitter) throws Exception {
+
+            }
+        }).subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread());
+        observable.subscribe(new Observer<Object>() {
+
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(Object o) {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+
+
     }
 
 
